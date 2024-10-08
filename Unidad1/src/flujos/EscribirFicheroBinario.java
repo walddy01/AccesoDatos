@@ -4,19 +4,25 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class EscribirFicheroBinario {
 public static void main(String[] args) {
-	//Abrimos el fichero binario para escritura
+	Scanner teclado = new Scanner(System.in);
 	try {
-		DataOutputStream dos = new DataOutputStream (new FileOutputStream (new File("ficheroBinario.dat")));
-	
-		 //Escribimos los datos
-		 dos.writeByte(97);
-		 dos.writeByte(98);
-		 dos.writeByte(99);
-		 dos.writeByte(100);
-		 dos.writeByte(101);
+		//Abrimos el fichero binario para escritura
+		DataOutputStream fichero = new DataOutputStream(new FileOutputStream(new File("alumno23")));
+		// Pedimos los datos
+		System.out.println("Escribe el expediente (int): ");
+		int expediente = Integer.parseInt(teclado.nextLine());
+		System.out.println("Escribe la nota (double): ");
+		double nota = Double.parseDouble(teclado.nextLine());
+		System.out.println("Introduce el nombre (string): ");
+		String nombre = teclado.nextLine();
+		// Escribimos en el fichero binario
+		fichero.writeInt(expediente);
+		fichero.writeDouble(nota);
+		fichero.writeChars(nombre+"\n");
 	} catch (FileNotFoundException e) {
 		e.printStackTrace();
 	} catch (IOException e1) {
