@@ -13,19 +13,11 @@ public class Ejercicio19 {
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
 
-//		System.out.print("Introduce el nombre del fichero: ");
-//		String nombreFichero = teclado.nextLine();
 		String nombreFichero = "cotizacion.txt";
 		File fOrigen = new File(nombreFichero);
 
 		int numLinea = 1;
 
-		// Mostrar fichero original
-		//mostrarFichero(nombreFichero, numLinea);
-
-		// Linea a borrar
-//		System.out.println("¿Qué linea desea borrar?");
-//		int lineaBorrar = Integer.parseInt(teclado.nextLine());
 		int lineaActual = 1;
 		int contador = 0;
 		String linea2 = "";
@@ -40,7 +32,7 @@ public class Ejercicio19 {
 			while ((linea = fichero.readLine()) != null) {
 
 				
-//				System.out.println(lineaActual);
+//				
 				if (lineaActual == 2) {
 					System.out.println(linea);
 					linea2 = linea;
@@ -58,22 +50,9 @@ public class Ejercicio19 {
 				}
 				lineaActual++;
 				
-//				if (lineaBorrar != lineaActual) {
-//					tmp.write(linea + "\n");
-//				} else {
-//					System.out.println("Los nuevos datos: ");
-//					String nuevaLinea = teclado.nextLine();
-//					tmp.write(nuevaLinea + "\n");
-//				}
 			}
 			tmp.close();
 			fichero.close();
-
-			// Pasar datos desde tmp.txt a original
-			//fOrigen.delete();
-			//ftmp.renameTo(fOrigen);
-
-			//mostrarFichero(nombreFichero, numLinea);
 
 		} catch (IOException e) {
 			System.out.println(e.getMessage());

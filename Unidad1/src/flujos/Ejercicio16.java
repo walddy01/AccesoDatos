@@ -13,9 +13,8 @@ public class Ejercicio16 {
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
 
-//		System.out.print("Introduce el nombre del fichero: ");
-//		String nombreFichero = teclado.nextLine();
-		String nombreFichero = "prueba.txt";
+		System.out.print("Introduce el nombre del fichero: ");
+		String nombreFichero = teclado.nextLine();
 		File fOrigen=new File(nombreFichero);
 
 		int numLinea = 1;
