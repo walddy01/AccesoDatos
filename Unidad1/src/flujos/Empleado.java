@@ -39,7 +39,8 @@ public class Empleado implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Empleado [dni=" + dni + ", nombre=" + nombre + ", sueldo=" + sueldo + "]";
+		//return "Empleado [dni=" + dni + ", nombre=" + nombre + ", sueldo=" + sueldo + "]";
+		return "DNI: " + dni + "\nNombre: " + nombre + "\nSueldo: " + sueldo + "\n";
 	}
 	
 

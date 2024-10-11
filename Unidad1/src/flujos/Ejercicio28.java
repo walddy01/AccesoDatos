@@ -15,6 +15,28 @@ public class Ejercicio28 {
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
 		
+		File f = new File("empleados2.dat");
+		
+		if (f.exists()) {
+			ObjectInputStream fichero;
+
+			try {
+
+				fichero = new ObjectInputStream(new FileInputStream("empleados2.dat"));
+				while (true) {
+					listaEmpleados = (HashSet<Empleado>) fichero.readObject();
+					//System.out.println(listaEmpleados);
+				}
+
+			} catch (Exception e) {
+
+			}
+			
+			for(Empleado i: listaEmpleados) {
+				System.out.println(i.getDni());
+			}
+		}
+		
 		int select = -1;
 
 		do {
@@ -88,22 +110,6 @@ public class Ejercicio28 {
 			// TODO: handle exception
 		}
 		
-
-//		ObjectOutputStream fichero;
-//
-//		File f = new File("empleados.dat");
-//
-//		try {
-//			if (f.exists()) {
-//				fichero = new MiObjectOutputStream(new FileOutputStream("empleados.dat", true));
-//			} else {
-//				fichero = new ObjectOutputStream(new FileOutputStream("empleados.dat", true));
-//			}
-//			fichero.writeObject(empleado);
-//
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
 	}
 
 	public static void buscarEmpleado() {
@@ -114,74 +120,54 @@ public class Ejercicio28 {
 
 		boolean encontrado = false;
 
-		Empleado empleado;
-		ObjectInputStream fichero;
-
-		try {
-
-			fichero = new ObjectInputStream(new FileInputStream("empleados.dat"));
-			while (true) {
-				empleado = (Empleado) fichero.readObject();
-
-				if (empleado.getDni().equals(dni)) {
-					System.out.println(empleado);
-					encontrado = true;
-				}
+		for (Empleado i: listaEmpleados) {
+			if (i.getDni().equals(dni)) {
+				System.out.println(i);
+				encontrado = true;
 			}
-
-		} catch (Exception e) {
-			if (!encontrado) {
-				System.out.println("No hay ningún empleado con el dni " + dni + ".");
-			}
+		}
+		
+		if (!encontrado) {
+			System.out.println("No se ha encontrado el empleado.");
 		}
 	}
 
 	public static void listarEmpleados() {
-		Empleado empleado;
-		ObjectInputStream fichero;
-
-		try {
-
-			fichero = new ObjectInputStream(new FileInputStream("empleados.dat"));
-			while (true) {
-				empleado = (Empleado) fichero.readObject();
-				System.out.println(empleado);
-			}
-
-		} catch (Exception e) {
-
+		for(Empleado i: listaEmpleados) {
+			System.out.println(i);
 		}
 	}
 
 	public static void borrarEmpleado() {
 		Scanner teclado = new Scanner(System.in);
-		
+
 		System.out.print("Introduce el DNI del empleado: ");
 		String dni = teclado.nextLine();
-		
-		
-		File original = new File("empleados.dat");
-		File tmp = new File("tmp.dat");
-		
-		Empleado empleado;
-		ObjectInputStream fichero;
-		ObjectOutputStream temporal;
-		
-		try {
-			
-			fichero = new ObjectInputStream(new FileInputStream("empleados.dat"));
-			temporal = new ObjectOutputStream(new FileOutputStream("tmp.dat"));
-			
-			while (true) {
-				empleado = (Empleado) fichero.readObject();
-				if (!empleado.getDni().equals(dni)) {
-					temporal.writeObject(empleado);
-				}
+
+		boolean encontrado = false;
+
+		for (Empleado i: listaEmpleados) {
+			if (i.getDni().equals(dni)) {
+				listaEmpleados.remove(i);
+				encontrado = true;
 			}
+		}
+		
+		if (!encontrado) {
+			System.out.println("No se ha encontrado el empleado.");
+		} else {
+			ObjectOutputStream fichero;
 			
-		} catch (Exception e) {
-			original.delete();
-			tmp.renameTo(original);
+			File f = new File("empleados2.dat");
+			f.delete();
+			try {
+				fichero = new ObjectOutputStream(new FileOutputStream("empleados2.dat"));
+				fichero.writeObject(listaEmpleados);
+				fichero.close();
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
 		
 	}
