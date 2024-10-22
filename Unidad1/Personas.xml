@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Personas>
+    <Persona><Nombre>Juan Pérez</Nombre><Edad>30</Edad><Ocupacion>Ingeniero</Ocupacion></Persona>
+    <Persona><Nombre>María García</Nombre><Edad>25</Edad><Ocupacion>Doctora</Ocupacion></Persona>
+    <Persona><Nombre>Carlos Sánchez</Nombre><Edad>40</Edad><Ocupacion>Profesor</Ocupacion></Persona>
+</Personas>
+
