@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<perros>
+    <perro>
+        <descripcion>Perro amistoso y enérgico</descripcion>
+        <edad>5</edad>
+        <estadoSalud>Bueno</estadoSalud>
+        <nombre>Max</nombre>
+        <peso>25.5</peso>
+        <raza>labrador</raza>
+    </perro>
+    <perro>
+        <descripcion>Ideal para familias activas</descripcion>
+        <edad>3</edad>
+        <estadoSalud>Excelente</estadoSalud>
+        <nombre>Luna</nombre>
+        <peso>30.0</peso>
+        <raza>Pastor Alemán</raza>
+    </perro>
+</perros>

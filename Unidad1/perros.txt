@@ -1,0 +1,2 @@
+Max,labrador,5,25.5,Bueno,Perro amistoso y enérgico
+Luna,Pastor Alemán,3,30.0,Excelente,Ideal para familias activas
